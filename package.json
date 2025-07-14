@@ -1,5 +1,5 @@
 {
-	"name": "@astralis-team/primitive-fetches",
+	"name": "@astralis-team/primitive-fetch",
 	"version": "1.0.0",
 	"description": "fetch instance",
 	"author": {
@@ -43,6 +43,7 @@
 		"pretty": "npm run type && npm run lint && npm run format"
 	},
 	"devDependencies": {
+		"shx": "^0.4.0",
 		"typescript": "^5.8.3",
 		"vite": "^7.0.0",
 		"vite-plugin-dts": "^4.5.4"
