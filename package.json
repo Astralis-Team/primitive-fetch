@@ -43,8 +43,6 @@
 		"pretty": "npm run type && npm run lint && npm run format"
 	},
 	"devDependencies": {
-		"@siberiacancode/eslint": "*",
-		"@siberiacancode/prettier": "*",
 		"typescript": "^5.8.3",
 		"vite": "^7.0.0",
 		"vite-plugin-dts": "^4.5.4"
