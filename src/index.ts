@@ -42,6 +42,7 @@ export interface FetchesParams {
 	baseURL: BaseUrl
 	headers?: Record<string, string>
 	parse?: ResponseParse
+	credentials?: RequestCredentials
 }
 
 export interface FetchesResponse<Data> {
@@ -110,6 +111,7 @@ class Fetches {
 
 	public headers: Record<string, string>
 	public parse?: ResponseParse
+	public credentials?: RequestCredentials
 
 	readonly interceptorHandlers: Interceptors
 
@@ -131,10 +133,11 @@ class Fetches {
 	}
 
 	constructor(params?: FetchesParams) {
-		const { baseURL = '', headers = {}, parse } = params ?? {}
+		const { baseURL = '', headers = {}, parse, credentials } = params ?? {}
 		this.baseURL = baseURL
 		this.headers = headers
 		this.parse = parse
+		this.credentials = credentials
 		this.interceptorHandlers = { request: [], response: [] }
 
 		this.interceptors = {
@@ -173,6 +176,10 @@ class Fetches {
 
 	setParse(parse: ResponseParse) {
 		this.parse = parse
+	}
+
+	setCredentials(credentials: RequestCredentials) {
+		this.credentials = credentials
 	}
 
 	private prepareBody(body?: RequestBody) {
@@ -330,6 +337,7 @@ class Fetches {
 			url,
 			method,
 			parse,
+			credentials: this.credentials,
 			headers: {
 				...this.headers,
 				...(body &&
