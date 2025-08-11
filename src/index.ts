@@ -386,8 +386,10 @@ class Fetches {
 
 	get<Data, Response = FetchesResponse<Data>>(
 		endpoint: string,
-		options: Omit<RequestOptions, 'body'> = {}
+		body?: RequestBody,
+		options: RequestOptions = {}
 	) {
+		options.body = body
 		return this.request<Data, Response>(endpoint, 'GET', options)
 	}
 
