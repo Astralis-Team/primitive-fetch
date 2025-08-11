@@ -5,13 +5,13 @@ A primitive HTTP client for making API requests.
 ## Installation
 
 ```bash
-npm install @astralis-team/fetch
+npm install @astralis-team/primitive-fetch
 ```
 
 ## Usage
 
 ```typescript
-import fetches from '@astralis-team/fetch'
+import fetches from '@astralis-team/primitive'
 
 const response = await fetches.get<User[]>('/users')
 ```
