@@ -385,16 +385,11 @@ class Fetches {
 	}
 
 	get<Data, Response = FetchesResponse<Data>>(
-	endpoint: string,
-	body?: RequestBody,
-	options: RequestOptions = {}
-) {
-	if (body && typeof body === "object" && !(body instanceof FormData) && !(body instanceof Blob)) {
-		options.params = { ...(options.params || {}), ...body }
+		endpoint: string,
+		options: RequestOptions = {}
+	) {
+		return this.request<Data, Response>(endpoint, 'GET', options)
 	}
-	delete options.body // обязательно, иначе fetch упадёт
-	return this.request<Data, Response>(endpoint, 'GET', options)
-}
 
 	head<Data, Response = FetchesResponse<Data>>(
 		endpoint: string,
